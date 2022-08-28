@@ -61,20 +61,27 @@ $ npm run test:cov
 ## Requests
 
 ```bash
-# pushCloudMetricsData
-$ curl --location --request POST 'http://localhost:3000'
+$ curl --location --request GET 'http://localhost:3000'
 
-# pushLocalMetricsData
-$ curl --location --request POST 'http://localhost:3000/edge/101/pushLocalMetrics/1001'
+$ curl --location --request GET 'http://localhost:3000/sayHelloEnglish/kenan/hancer'
 
-# pushProfileData
-$ curl --location --request POST 'http://localhost:3000/edge/101/pushProfile/1001'
+$ curl --location --request GET 'http://localhost:3000/sayGoodbyeEnglish/kenan/hancer'
 
-# pushSensorData
-$ curl --location --request POST 'http://localhost:3000/edge/101/pushSensor/1001'
+$ curl --location --request GET 'http://localhost:3000/sayHelloTurkish/kenan/hancer'
 
-# receiveTimingData
-$ curl --location --request POST 'http://localhost:3000/edge/101/pushTiming/1001'
+$ curl --location --request GET 'http://localhost:3000/sayGoodbyeTurkish/kenan/hancer'
+
+$ curl --location --request GET 'http://localhost:3000/sayHellov1/TR/kenan/hancer'
+
+$ curl --location --request GET 'http://localhost:3000/sayHellov1/EN/kenan/hancer'
+
+$ curl --location --request GET 'http://localhost:3000/sayHellov2/kenan/hancer'
+
+$ curl --location --request GET 'http://localhost:3000/sayHellov2/kenan/hancer?language=EN'
+
+$ curl --location --request GET 'http://localhost:3000/sayHellov3/kenan/hancer'
+
+$ curl --location --request GET 'http://localhost:3000/sayHellov3/kenan/hancer?language=EN'
 ```
 
 ## Support
