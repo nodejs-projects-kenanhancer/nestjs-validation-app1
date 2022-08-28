@@ -82,6 +82,10 @@ $ curl --location --request GET 'http://localhost:3000/sayHellov2/kenan/hancer?l
 $ curl --location --request GET 'http://localhost:3000/sayHellov3/kenan/hancer'
 
 $ curl --location --request GET 'http://localhost:3000/sayHellov3/kenan/hancer?language=EN'
+
+$ curl --location --request GET 'http://localhost:3000/sayHellov4?firstName=kenan&lastName=hancer'
+
+$ curl --location --request GET 'http://localhost:3000/sayHellov4?language=TR&firstName=kenan&lastName=hancer'
 ```
 
 ## Support

@@ -1,5 +1,5 @@
-import { Controller, DefaultValuePipe, Get, Param, ParseEnumPipe, Query, ValidationPipe } from '@nestjs/common';
-import { IsEnum, IsNotEmpty } from 'class-validator';
+import { Controller, DefaultValuePipe, Get, Param, ParseEnumPipe, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import { IsEnum, IsIn, IsNotEmpty } from 'class-validator';
 import { AppService } from './app.service';
 
 enum Language {
@@ -14,6 +14,14 @@ class SayHelloV2QueryParams {
 }
 
 class SayHelloV3Params {
+  firstName: string;
+  lastName: string;
+}
+
+class SayHelloV4QueryParams {
+  @IsIn(['EN', 'TR'])
+  @IsNotEmpty()
+  language: string = 'EN';
   firstName: string;
   lastName: string;
 }
@@ -81,5 +89,15 @@ export class AppController {
     const { firstName, lastName } = params;
 
     return this.sayHelloV1(language, firstName, lastName);
+  }
+
+  // curl --location --request GET 'http://localhost:3000/sayHellov4?firstName=kenan&lastName=hancer'
+  // curl --location --request GET 'http://localhost:3000/sayHellov4?language=TR&firstName=kenan&lastName=hancer'
+  @Get('/sayHelloV4')
+  @UsePipes(new ValidationPipe({ transform: true }))
+  sayHelloV4(@Query() queryParams: SayHelloV4QueryParams): string {
+    const { language, firstName, lastName } = queryParams;
+
+    return this.sayHelloV1(language as Language, firstName, lastName);
   }
 }
